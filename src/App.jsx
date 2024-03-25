@@ -1,14 +1,15 @@
 import './App.css'
-import Footer from './Components/Footer'
+import HomeLayout from './Layouts/HomeLayout'
+
 // import { Routes } from 'react-router-dom'
 
 
 function App() {
 
   return (
-    <>
-      <Footer/>
-    </>
+    <div>
+      <HomeLayout/>
+    </div>
   )
 }
 
