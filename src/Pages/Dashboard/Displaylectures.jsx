@@ -2,11 +2,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import HomeLayout from "../../Layouts/HomeLayout";
 import { useEffect, useState } from "react";
 import { deleteCourseLecture, getCourseLectures } from "../../Redux/Slices/LectureSlice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function Displaylectures(){
     const navigate = useNavigate();
-    const dispatch = useNavigate();
+    const dispatch = useDispatch();
     const {state} = useLocation();
     const {lectures} = useSelector((state)=>state.lecture);
     const {role} = useSelector((state)=>state.auth);
@@ -21,7 +21,7 @@ function Displaylectures(){
     useEffect(()=>{
         console.log(state)
         if(!state) navigate("/courses");
-        dispatch(getCourseLectures(state._id));
+        dispatch(getCourseLectures(state?._id));
     },[]);
 
     return(
@@ -30,8 +30,8 @@ function Displaylectures(){
                 <div className=" text-center text-2xl font-semibold text-yellow-500">
                     Course Name: {state?.title}
                 </div>
-
-                {lectures && lectures.length > 0 && <div className=" flex justify-center gap-10 w-full">
+            
+                {lectures && lectures.length > 0 &&  <div className=" flex justify-center gap-10 w-full">
                     {/*left section for playing videos and displaying course details to admin*/}
                     <div className=" space-y-5 w-[28rem] p-2 rounded-lg shadow-[0_0_10px_black]">
                         <video 
@@ -64,7 +64,7 @@ function Displaylectures(){
                         <li className=" font-semibold text-xl text-yellow-500 flex items-center justify-between">
                             <p>Lecture list</p>
                             {role=="ADMIN" && (
-                                <button onClick={()=> navigate("/course/addLecture", {state:{...state}})} className=" btn-primary px-2 py-1 rounded-md font-semibold text-sm">
+                                <button onClick={()=> navigate("/course/addLecture", {state:{...state}})} className=" bg-pink-500 hover:bg-pink-600 text-white px-2 py-1 rounded-md font-semibold text-sm">
                                     Add new lecture
                                 </button>
                             )}
@@ -79,7 +79,7 @@ function Displaylectures(){
                                         {lecture?.title}
                                     </p>
                                     {role=="ADMIN" && (
-                                        <button onClick={()=>onLectureDelete(state?._id,lecture?._id)} className=" btn-accent px-2 py-1 rounded-md font-semibold text-sm">
+                                        <button onClick={()=>onLectureDelete(state?._id,lecture?._id)} className=" bg-red-500 hover:bg-red-600 px-2 py-1 rounded-md font-semibold text-sm">
                                             Delete lecture
                                         </button>
                                     )}
