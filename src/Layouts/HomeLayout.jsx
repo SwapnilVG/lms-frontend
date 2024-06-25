@@ -39,7 +39,7 @@ function HomeLayout({children}){
         navigate('/')
     }
 
-
+    console.log('HomeLayout children:', children);
     return(
         <div className="min-h-[90vh] bg-slate-600">
             <div className="drawer absolute left-0 z-50 w-fit">
@@ -110,8 +110,8 @@ function HomeLayout({children}){
                                     <button className=" btn-primary px-4 py-1 font-semibold rounded-md w-full bg-violet-800">
                                         <Link to='/user/profile'>Profile</Link>
                                     </button>
-                                    <button className=" btn-secondary px-4 py-1 font-semibold rounded-md w-full bg-pink-800">
-                                        <Link onClick={handleLogout}>Logout</Link>
+                                    <button onClick={handleLogout} className=" btn-secondary px-4 py-1 font-semibold rounded-md w-full bg-pink-800">
+                                        <Link>Logout</Link>
                                     </button>
                                 </div>
                             
@@ -126,7 +126,7 @@ function HomeLayout({children}){
             <Footer/>
             
         </div>
-    )
+    );
 }
 
 export default HomeLayout;

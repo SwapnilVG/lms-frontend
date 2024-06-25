@@ -79,7 +79,7 @@ function Displaylectures(){
                                         </span>
                                         {lecture?.title}
                                     </p>
-                                    {role=="ADMIN" && (
+                                    {role==="ADMIN" && (
                                         <button onClick={()=>onLectureDelete(state?._id,lecture?._id)} className=" bg-red-500 hover:bg-red-600 px-2 py-1 rounded-md font-semibold text-sm">
                                             Delete lecture
                                         </button>
