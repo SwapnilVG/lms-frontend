@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://backend-project-guqr.onrender.com/api/v1"
+const BASE_URL = "https://backend-project-32b2.onrender.com/api/v1"  
 
 const axiosInstance = axios.create();
 axiosInstance.defaults.baseURL = BASE_URL;
